@@ -1,0 +1,47 @@
+.form-wrapper {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* space between each row */
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-wrapper > div {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* space between label and input */
+}
+
+.form-wrapper label {
+  min-width: 155px; /* consistent label width */
+}
+
+.form-wrapper input[type="text"] {
+  flex: 1; /* grow to take available space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-wrapper button {
+  margin-top: 20px;
+}
+
+.mydiv {
+  align-items: center !important;
+  justify-content: space-around !important;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4A90E2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+form h2 {
+  text-align:center;
+  margin-bottom: 20px;
+}

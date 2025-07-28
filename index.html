@@ -1,0 +1,155 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-danger">Danger</button>
+
+</body>
+</html> -->
+
+<!--To see the txt while hovering over the image-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Hover Content Example</title>
+
+  <style>
+    /* body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    } */
+
+    .image-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .image-container:hover img {
+      transform: scale(1.05);
+    }
+
+    .hover-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 18px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .image-container:hover .hover-content {
+      opacity: 1;
+    }
+  </style>
+
+  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+
+</head>
+
+<body>
+
+  <div class="image-container">
+    <img src="https://via.placeholder.com/300x200" alt="Sample Image">
+    <div class="hover-content">This content appears on hover!</div>
+  </div>
+
+
+  <h1>Hello JavaScript!</h1>
+  <button onclick="sayHello()">Click Me</button>
+
+  <p id="output"></p>
+  <button onclick="sayHello()">Click Me</button>
+
+  <div class="header-transparent">
+    <h1>Header Transparent</h1>
+  </div>
+
+  <div class="header-top">
+    <h1>Responsive Header</h1>
+    <p>This header will change when the screen width is between 768px and 991px.</p>
+  </div>
+
+  <br><br>
+  <button id="myBtn">Hover Me!</button>
+
+  <br><br>
+  <div id="box">Hello!</div>
+  <br>
+  <button id="box1" onclick="addRedBorder('box1')">Add Red Border</button>
+
+  <br><br><br>
+  <button class="box" onclick="addRedBorder(this)">Hello</button>
+  <button class="box" onclick="addRedBorder(this)">World</button>
+  <button class="box" onclick="addRedBorder(this)">!</button>
+  <button onclick="addRedBorderToClass('box')">Add Red Border to All Boxes</button>
+
+  <br><br><br><br>
+  <button id="myButton">Click Me</button>
+
+  <button id="heybtn">Click Here!</button>
+
+  <br><br>
+  <button id="btn1">Default</button>
+<button id="btn2">Custom Green</button>
+
+<br><br>
+
+<button data-component="button">Click Me</button>
+
+<button data-component="button" id="customBtn">Custom Button</button>
+
+<br><br>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Tailwind CSS 
+</button>
+<br><br><br>
+
+<button onclick="toggleTheme()">Toggle Theme</button>
+<button onclick="toggleTheme()" class="toggle-button">Toggle Theme</button>
+
+
+
+  <script src="script.js" defer></script>
+  <script src="Components\header.js"></script>
+  <script src="Components\theme.js"></script>
+
+  
+
+</body>
+
+</html>
