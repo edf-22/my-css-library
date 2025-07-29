@@ -196,10 +196,10 @@
 
 <!--BackgroundColor-borderRadius-Color-hoverBgColor-hoverColor--> 
 <br><br>
-<button data-component="button">
+<button data-component="button" class="p-10 fs-20">
   Delete
 </button>
-<button data-component="button" class="bg-red r-10 text-white hover-bg-darkred">
+<button data-component="button" class="bg-red r-10 color-white hover-bg-darkred">
   Delete
 </button>
 
@@ -207,13 +207,13 @@
 <button data-component="button">
   Submit
 </button>
-<button data-component="button" class="bg-green r-20 text-black">
+<button data-component="button" class="bg-green r-20 color-black">
   Submit
 </button>
 
 <br><br>
 <button data-component="button">hi</button>
-<button data-component="button" class="bg-yellow r-50 text-blue hover-bg-darkmagenta hover-text-red">hi</button>
+<button data-component="button" class="bg-yellow r-50 color-blue hover-bg-darkmagenta hover-color-red">hi</button>
 <br><br>
 <button data-component="button" class="r-10">Hii!</button>
 <br><br>
@@ -221,7 +221,7 @@
 
 <br><br><br>
 <button data-component="button" class="bg-black">GoodNight!</button>
-<button data-component="button" class="bg-black r-0 text-white">GoodNight!</button>
+<button data-component="button" class="bg-black r-0 color-white">GoodNight!</button>
 
 <br><br><br>
 <button class="my-btn">Styled Button</button>
@@ -229,13 +229,13 @@ hello How Are You?
 
 <br><br><br>
 <button data-component="button">Hello</button>
-<button data-component="button" class="bg-pink r-5 text-black hover-bg-none hover-text-none">Hello</button>
+<button data-component="button" class="bg-pink r-5 color-black hover-bg-none hover-color-none">Hello</button>
 
-<button data-component="button" class="bg-pink r-5 text-black hover-bg-none hover-text-none">No Hover</button>
+<button data-component="button" class="bg-pink r-5 color-black hover-bg-none hover-color-none">No Hover</button>
 
-<button data-component="button" class="bg-purple about_us r-5 text-black hover-bg-none hover-text-none">No Hover</button>
+<button data-component="button" class="bg-purple about_us r-5 color-black hover-bg-none hover-color-none">No Hover</button>
 
-<button data-component="button" class="bg-green r-8 color-white hover-bg-darkgreen hover-text-yellow">With Hover</button>
+<button data-component="button" class="bg-green r-8 color-white hover-bg-darkgreen hover-color-yellow">With Hover</button>
 <button class="mybtn2">With Hover</button>
 
 
@@ -253,7 +253,7 @@ hello How Are You?
   });
 </script>
 
-<script>
+<!-- <script>
   ButtonLib.setCustomButton(".mybtn2", {
     backgroundColor: "green",
     color: "white",
@@ -263,6 +263,20 @@ hello How Are You?
     hoverColor: "yellow",
     borderRadius: "8px"
   });
+</script> -->
+
+<script>
+  window.customButtonStyles = {
+    "#specialBtn, .mybn2": {
+    backgroundColor: "green",
+    color: "white",
+    fontSize: "16px",
+    border: "1px solid blue",
+    hoverBackgroundColor: "darkgreen",
+    hoverColor: "yellow",
+    borderRadius: "8px"
+  }
+};
 </script>
 
 
