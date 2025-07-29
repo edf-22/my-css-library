@@ -212,17 +212,30 @@ function injectLabeledStyles(styles, componentName) {
 injectLabeledStyles(defaultStyles, "header");
 
 // ✅ Inject sticky styles separately with label
-function injectStickyStyles() {
+// Replace the original injectStickyStyles() with this version:
+function injectStickyStyles(userStyles = {}) {
+    const defaultStyles = {
+        backgroundColor: '#f0f0f0',
+        boxShadow: '0 10px 15px rgba(0, 0, 0, 0.2)',
+        margin: '0'
+    };
+
+    const mergedStyles = { ...defaultStyles, ...userStyles };
+
     const style = document.createElement('style');
     style.setAttribute('data-component', 'header-sticky');
     style.textContent = `
-        /* Sticky styles injected by header.js */
         .sticky {
-            background-color: #f0f0f0 !important;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2) !important;
-            margin: 0 !important;
+            background-color: ${mergedStyles.backgroundColor} !important;
+            box-shadow: ${mergedStyles.boxShadow} !important;
+            margin: ${mergedStyles.margin} !important;
         }
     `;
+
+    // Remove existing sticky styles if any
+    const existing = document.querySelector('style[data-component="header-sticky"]');
+    if (existing) existing.remove();
+
     document.head.appendChild(style);
 }
 injectStickyStyles();
@@ -257,21 +270,116 @@ function applyInlineStyles(styleMap) {
     }
 }
 
-// 🧠 Scoped user styles via selector remapping (unchanged)
-function setCustomHeaderStyles(baseSelector, styleMap) {
-    const finalStyles = {};
-    for (const childSelector in styleMap) {
-        let fullSelector = '';
-        if (childSelector.startsWith('.') || childSelector.startsWith('#')) {
-            fullSelector = childSelector;
-        } else if (childSelector.includes('&')) {
-            fullSelector = childSelector.replace(/&/g, baseSelector);
-        } else {
-            fullSelector = `${baseSelector} ${childSelector}`.trim();
-        }
-        finalStyles[fullSelector] = styleMap[childSelector];
+// Mobile Navigation Module
+const MobileNavigation = (function() {
+    let toggleBtn, closeBtn, mobileNav;
+    
+    function init() {
+        toggleBtn = document.querySelector(".toggle-btn");
+        closeBtn = document.querySelector(".mobile-nav-close");
+        mobileNav = document.querySelector(".mobile-nav");
+
+        if (!toggleBtn || !closeBtn || !mobileNav) return;
+
+        // Use event listeners instead of onclick for better control
+        toggleBtn.addEventListener('click', openNav);
+        closeBtn.addEventListener('click', closeNav);
+        
+        // Close when clicking on nav links
+        const navLinks = mobileNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+
+        // Close when pressing Escape key
+        document.addEventListener('keydown', handleKeyDown);
     }
-    applyInlineStyles(finalStyles);
+
+    function openNav() {
+        mobileNav.classList.add("show-nav");
+        document.body.style.overflow = 'hidden';
+        toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeNav() {
+        mobileNav.classList.remove("show-nav");
+        document.body.style.overflow = '';
+        toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function handleKeyDown(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('show-nav')) {
+            closeNav();
+        }
+    }
+
+    // Cleanup function (optional, for single-page apps)
+    function destroy() {
+        if (!toggleBtn || !closeBtn) return;
+        
+        toggleBtn.removeEventListener('click', openNav);
+        closeBtn.removeEventListener('click', closeNav);
+        document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    return {
+        init,
+        destroy
+    };
+})();
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', MobileNavigation.init);
+
+// 🧠 Scoped user styles via selector remapping (unchanged)
+// Utility function to convert camelCase to kebab-case
+function toKebab(str) {
+    return str.replace(/[A-Z]/g, m => "-" + m.toLowerCase());
+}
+
+// Main customization function
+function setCustomHeaderStyles(target, styles) {
+    // Determine if we're styling a base selector or doing nested styling
+    const isNested = typeof styles === 'object' && 
+                     Object.values(styles).some(v => typeof v === 'object');
+    
+    // Create unique ID for the style tag
+    const styleId = `custom-header-${target.replace(/[^a-z0-9]/gi, '')}`;
+    
+    // Remove existing style tag if it exists
+    const existingStyle = document.getElementById(styleId);
+    if (existingStyle) existingStyle.remove();
+    
+    // Create new style element
+    const styleEl = document.createElement('style');
+    styleEl.id = styleId;
+    
+    let css = '';
+    
+    if (isNested) {
+        // Handle nested styling (parent with child selectors)
+        for (const childSelector in styles) {
+            const fullSelector = childSelector.startsWith('&') 
+                ? childSelector.replace('&', target)
+                : `${target} ${childSelector}`;
+            
+            css += `${fullSelector} {\n`;
+            for (const [prop, value] of Object.entries(styles[childSelector])) {
+                css += `  ${toKebab(prop)}: ${value}${value.includes('!important') ? '' : ' !important'};\n`;
+            }
+            css += '}\n';
+        }
+    } else {
+        // Handle direct styling (single selector)
+        css += `${target} {\n`;
+        for (const [prop, value] of Object.entries(styles)) {
+            css += `  ${toKebab(prop)}: ${value}${value.includes('!important') ? '' : ' !important'};\n`;
+        }
+        css += '}\n';
+    }
+    
+    styleEl.textContent = css;
+    document.head.appendChild(styleEl);
 }
 
 // 🧠 Sticky header activation (unchanged)

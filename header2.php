@@ -226,17 +226,36 @@
     <script src="Components\StyleParser.js"></script>
     <script src="Components\header2.js"></script>
 
-    <!-- <script>
-    setCustomHeader('.header-bottom', {
-        borderTopLeftRadius: '15px',
-        borderTopRightRadius: '15px'
-    });
-    // setCustomHeader('.sticky', {
-    //     margin: '40px !important'
-    // }); 
-</script>
+    <script>
+        setCustomHeaderStyles('.header-bottom', {
+            borderTopLeftRadius: '15px',
+            borderTopRightRadius: '15px'
+        });
+        setCustomHeaderStyles('.sticky', {
+            backgroundColor: '#5894d1ff'
+        }); 
 
-<script>
+        // injectStickyStyles will also work if you want to apply styles to the sticky header and this will override the styles set by setCustomHeaderStyles.
+        
+        // injectStickyStyles({
+        //     backgroundColor: '#ff0bc6ff'
+        // });
+    </script>
+
+    <script>
+        setCustomHeaderStyles('header', {
+            '.mobile-nav': {
+                top: '-100%',
+                right: '0px',
+                width: '100%'
+            },
+            '.show-nav': {
+                top: '0px'
+            }
+        });
+    </script>
+
+    <!-- <script>
     setCustomHeaderStyles('header', {
     '.sections a': {
         color: 'yellow'
