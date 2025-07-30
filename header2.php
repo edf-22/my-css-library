@@ -253,6 +253,9 @@
                 top: '0px'
             }
         });
+        setCustomHeaderStyles('.sections ul li a, .appointmentBtn', {
+            color: 'pink'
+        });
     </script>
 
     <!-- <script>
