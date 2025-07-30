@@ -90,7 +90,7 @@
 
   </section>
 
-  <section id="eventSection" style="display: none;">
+  <section id="eventSection">
     <div class="container event-container">
       <div class="row align-items-center pl-40">
         <div class="col-lg-12 align-self-center">
@@ -102,8 +102,8 @@
 
             <h3>Foundation Day </h3>
             <div class="media-content">
-              <img src="Images/backgroung_img.jpg" alt="" data-folder-label-color="#ff0000" data-folder-label="Our Mom's Day 2023">
-              <img src="Images/bg2.jpg" alt="" data-folder-label-color="#2be912ff">
+              <img src="Images/backgroung_img.jpg" alt="">
+              <img src="Images/bg2.jpg" alt="">
               <img src="Images/bg3.jpg" alt="">
               <img src="Images/bg4.jpg" alt="">
               <img src="Images/bg5.jpg" alt="">
@@ -121,7 +121,7 @@
     <div class="container">
       <div class="row align-items-center pl-40">
         <div class="col-lg-12 align-self-center">
-          <div class="subfolder" data-folder="mothers-day">
+          <div class="subfolder">
             <h3>Father's Day </h3>
             <div class="media-content">
               <img src="Images/backgroung_img.jpg" alt="">
