@@ -159,15 +159,19 @@
             },
             '.contact-list li, .contact-list i' : {
                 color: '#000'
-            },
-            //  '.footer-overlay': {
-            //     background: 'linear-gradient(to right, rgba(205, 200, 200, 0.7), rgba(195, 189, 189, 0))'
-            // }
+            }
         });
 
+        //Do not use the following code.
         // setCustomFooter('.contact-list li, .contact-list i', {
         //     color: '#000'
         // });
+
+        // the below is from above code.. do not use this as well.. not working
+        // ,
+            //  '.footer-overlay': {
+            //     background: 'linear-gradient(to right, rgba(205, 200, 200, 0.7), rgba(195, 189, 189, 0))'
+            // }
 
     </script>
 
