@@ -1001,13 +1001,13 @@
 
   <br><br><br>
   <table data-component="table" class="multiple-fields-table">
-    <thead>
+    <!-- <thead>
       <tr>
         <th>Country</th>
         <th>Capital</th>
         <th>Population</th>
       </tr>
-    </thead>
+    </thead> -->
     <tbody class="border-1px_solid_#000">
       <tr>
         <th rowspan="3">Country</th> <!-- Spans 3 rows -->
